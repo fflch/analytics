@@ -1,0 +1,18 @@
+{% extends 'analytics/base.html' %}
+
+{%block content %}
+
+    {% if chart %}
+
+        <div class='d-flex flex-wrap'>
+        <div class="card" style="width: 18rem;">
+                <img src="data:image/png;base64, {{ chart|safe }}" alt="Grafico defesas">
+                <div class="card-body">
+                    <h5 class="card-title" style='text-align:center; font-size: 16px;'>Numero de defesas por tipo - 2021</h5>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
