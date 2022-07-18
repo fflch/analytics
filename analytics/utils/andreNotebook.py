@@ -34,22 +34,22 @@ def grafico_defesas():
     parametros = {"ano":2021, "codcur": ''}
     resultado = requests.get(url = 'https://dados.fflch.usp.br/api/defesas', params = parametros)
     dados = resultado.json()
-    count = 0
-    count1 = 0
-    count2 = 0
     titulos = ['Mestrado', 'Doutorado', 'Doutorado direto']
+    tabela = pd.DataFrame(dados)
+    tipo = tabela['nivel'].value_counts()
+    lista_temporaria_x = []
+    lista_eixo_y = []
 
     for i in dados:
-        if i['nivel'] == "ME":
-            count += 1
+        j = i.get('nivel')
+        lista_temporaria_x.append(j)
+        lista_eixo_x = list(set(lista_temporaria_x))
+        lista_eixo_x.reverse()
 
-        if i['nivel'] == "DO":
-            count1 += 1
-
-        if i['nivel'] == "DD":
-            count2 += 1    
-
-    valores_y = [count, count1, count2]
+    x = 0
+    while x < len(tipo):
+        lista_eixo_y.append(tipo[x])
+        x += 1  
 
 
-    return titulos, valores_y
+    return titulos, lista_eixo_y
