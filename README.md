@@ -15,4 +15,5 @@ Participantes:
     - Thiago
     - Teste
     - André
+    - Ricardo
 
